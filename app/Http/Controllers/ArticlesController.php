@@ -7,7 +7,7 @@ use App\Models\Article;
 class ArticlesController extends Controller
 {
     /**
-     * Display a listing of the resource xxxaaa.
+     * Display a listing of the resource xxxaaaxxxx.
      *
      * @return \Illuminate\Http\Response
      */
