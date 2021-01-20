@@ -14,11 +14,11 @@ use App\Http\Controllers\HomeController;
 |
 */
 use App\Http\Controllers\ArticlesController;
-
-Route::resource('articles', ArticlesController::class);
+use App\Http\Controllers\APIDocsController;
+//Route::resource('articles', ArticlesController::class);
 
 Route::get('/', function () {
-    return view('welcome');
+    dd(123);
 });
 
 Auth::routes();
@@ -26,3 +26,33 @@ Auth::routes();
 //Route::resource(name:'articles',controller:ArticleController::class);
 //Route::resource('articles', 'App\Http\Controllers\ArticlesController');
 //Route::get('/home', [HomeController::class, 'index'])->name('home');
+/*
+Route::post('testmid', ['middleware' => ['OldMiddleware'], function () {    //
+    echo "AV頁";
+}]);
+*/
+/*
+Route::post('testmid', function () {    //
+    echo "AV頁";
+})->middleware(['OldMiddleware']);
+*/
+Route::group(['middleware' => 'OldMiddleware'], function () {
+    Route::post('gy', function () {    //
+        echo "GY頁(post)";
+    });
+    Route::get('av', function () {    //
+        echo "AV頁(get)";
+    });
+});
+Route::get('/get-api-document',[ArticlesController::class], 'index');
+//Route::get('/get-api-document', [APIDocsController::class, 'getJSON']);
+//Route::get('/get-api-document','App\Http\Controllers\APIDocsController@getJSON')
+/*
+Route::get('/', ['middleware' => ['first', 'second'], function () {
+    //
+}]);
+*/
+/*
+Route::get('/', function () {
+}])->middleware(['first', 'second']);
+*/
